@@ -1,5 +1,5 @@
 <video autoplay loop muted playsinline style="width: 100%; max-height: 420px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem;">
-  <source src="https://videos.pexels.com/video-files/853889/853889-hd_1920_1080.mp4" type="video/mp4" />
+  <source src="recording-2026-10-31_09-25-17.mp4"/>
 </video>
 
 # mydotfiles
