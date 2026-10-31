@@ -4,10 +4,7 @@ A personal Arch Linux + Hyprland dotfiles repository with a modern desktop setup
 
 This repo contains configuration files and small helper scripts I use to customize my Linux desktop environment.
 
-<video autoplay loop muted playsinline style="width: 100%; max-height: 420px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem;">
-  <source src="https://youtu.be/LpL3YX5GxWI"/>
-</video>
-
+Preview video here - "https://youtu.be/LpL3YX5GxWI"
 ## Overview
 
 This setup is tuned for:
