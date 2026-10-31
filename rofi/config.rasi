@@ -1,0 +1,103 @@
+
+/* Import pywal-generated Rofi colors */
+@import "~/.cache/matugen/rofi-colors.rasi"
+
+configuration {
+    font: "JetBrainsMono Nerd Font 12";
+    show-icons: true;
+    drun-display-format: "{name}";
+    disable-history: false;
+}
+
+/* Main window */
+window {
+    width: 650px;
+    padding: 20px;
+    border: 2px;
+    border-radius: 8px;
+    border-color: @selected-normal-background;
+    background-color: @background;
+}
+
+/* Layout */
+mainbox {
+    spacing: 14px;
+    background-color: transparent;
+    children: [ inputbar, message, listview ];
+}
+
+inputbar {
+    padding: 12px;
+    spacing: 10px;
+    border: 1px;
+    border-radius: 6px;
+    border-color: @normal-foreground;
+    background-color: @normal-background;
+    text-color: @normal-foreground;
+    children: [ prompt, entry ];
+}
+
+prompt {
+    background-color: transparent;
+    text-color: @selected-normal-background;
+}
+
+entry {
+    background-color: transparent;
+    text-color: @normal-foreground;
+}
+
+message {
+    padding: 8px;
+    background-color: transparent;
+    text-color: @normal-foreground;
+}
+
+listview {
+    columns: 1;
+    lines: 8;
+    spacing: 6px;
+    fixed-height: false;
+    scrollbar: false;
+    background-color: transparent;
+}
+
+element {
+    padding: 10px;
+    spacing: 10px;
+    border-radius: 6px;
+    background-color: @normal-background;
+    text-color: @normal-foreground;
+}
+
+element normal.normal {
+    background-color: @normal-background;
+    text-color: @normal-foreground;
+}
+
+element selected.normal {
+    background-color: @selected-normal-background;
+    text-color: @selected-normal-foreground;
+}
+
+element alternate.normal {
+    background-color: @alternate-normal-background;
+    text-color: @alternate-normal-foreground;
+}
+
+element-icon {
+    size: 24px;
+    background-color: transparent;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+}
+
+scrollbar {
+    background-color: @background;
+    handle-color: @selected-normal-background;
+    handle-width: 4px;
+    border: 0px;
+}

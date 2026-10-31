@@ -1,0 +1,304 @@
+@import    "/home/baby/.cache/matugen/colors.css";
+
+/* ==========================================
+   SWAYNC — CUSTOM PALETTE
+   Fixed 722px panel | Opaque surfaces
+   ========================================== */
+
+/* ===== GLOBAL ===== */
+
+* {
+    font-family: "InputMono Nerd Font", sans-serif;
+    transition: 120ms ease-in-out;
+    scrollbar-width: none;
+}
+
+/* ===== CONTROL CENTER ===== */
+
+.control-center {
+    background-color: @foreground;
+    color: @background;
+    border-radius: 12px;
+
+    padding: 8px;
+    margin: 0;
+
+    box-shadow: none;
+}
+
+.controls-title{
+    padding: 0;
+    margin: 10px;
+}
+
+/* ===== MEDIA PLAYER ===== */
+
+.widget-mpris {
+    margin: 8px 0 8px 0;
+    padding: 0;
+}
+
+.widget-mpris-player {
+    background-color: @surface_container;
+    border-radius: 10px;
+    margin: 0;
+}
+
+/* Album art on the left */
+.widget-mpris-album-art {
+    min-width: 76px;
+    min-height: 76px;
+
+    margin: 0 10px 0 0;
+    border-radius: 7px;
+}
+
+/* Track title on the right */
+.widget-mpris-title {
+    color: @foreground;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Artist / album below title */
+.widget-mpris-subtitle {
+    color: @secondary;
+    font-size: 12px;
+}
+
+/* Playback controls on the right */
+.widget-mpris button {
+    background-color: transparent;
+    color: @foreground;
+
+    border: none;
+    border-radius: 99px;
+    padding: 4px;
+    margin: 10px 0px 0px 0px;
+}
+
+.widget-mpris button image {
+    -gtk-icon-size: 14px;
+}
+
+.widget-mpris button:hover {
+    background-color: @primary;
+    color: @on_primary;
+}
+
+/* ===== BUTTON GRIDS ===== */
+
+.widget-buttons-grid {
+    background-color: @background;
+    padding:  6px 16px;
+    margin: 0;
+}
+
+.widget-buttons-grid button {
+    color: @foreground;
+    border-radius: 6px;
+
+    padding: 4px;
+    margin: 2px;
+    min-height: 23px;
+}
+
+.widget-buttons-grid button:hover {
+    background-color: @primary;
+    color: @on_primary;
+}
+
+/* ===== NOTIFICATION HEADER ===== */
+.notification{
+    padding: 0;
+    margin: 0;
+    background-color: @surface-container;
+}
+.widget-title {
+    background-color: @background;
+    color: @foreground;
+
+    padding: 6px 16px;
+    margin: 2px 0;
+}
+
+.widget-title button {
+    font-size: 8px;
+    background-color: @surface_container;
+    color: @foreground;
+    border-radius: 6px;
+
+    padding: 3px 6px;
+    margin: 0;
+}
+
+.widget-title button:hover {
+    background-color: @primary;
+    color: @on_primary;
+}
+
+/* ===== NOTIFICATION CARDS ===== */
+.notifications{
+    background-color: @foreground;
+    color: @background;
+}
+.notifications button{
+    background-color: @background;
+    padding: 4px 20px;
+}
+.notification-row {
+    max-height: 50px;
+    background-color: transparent;
+    margin: 0px ;
+    padding: 0;
+}
+.widget-notifications{
+    min-height: 240px;
+    max-height: 280px;
+    background-color: @primary;
+}
+.notification-group{
+    background-color: transparent;
+    border: 1px solid @background;
+    border-radius: 16px;
+}
+.notification-group-headers{
+    padding: 8px;
+}
+.notification-group-header{
+    font-size: 16px;
+    color: @background;
+}
+.notification-group-icon{
+}
+.notification-group-buttons button{
+    color: @background;
+}
+
+.control-center .notification-background {
+    background-color: transparent;
+    padding: 10px;
+    margin: 8px;
+
+    border-radius: 7px;
+
+    padding: 0;
+
+    box-shadow: none;
+}
+
+.control-center .notification-background:hover {
+    background-color: transparent;
+    margin: 5px;
+    padding: 0;
+}
+
+.control-center .notification-background .notification {
+    min-height: 64px;
+    background-color: @background;
+    color: @foregound;
+
+    border-radius: 16px;
+    margin: 0;
+    padding: 0px;
+}
+
+.notification-content {
+    background-color: @background;
+    color: @background;
+}
+
+.summary {
+    color: @foreground;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
+}
+.time {
+ font-size: 12px;
+ margin: 0 25px;
+ padding: 0;
+}
+.body {
+    color: @foreground;
+    font-size: 9px;
+    padding: 0px 12px;
+}
+
+.close-button {
+    background-color: @background;
+    color: @foreground;
+
+    border: 1px solid @outline;
+    border-radius: 50%;
+
+    min-width: 17px;
+    min-height: 17px;
+    padding: 0;
+}
+
+.close-button:hover {
+    background-color: @error;
+    color: @background;
+}
+
+.notification-action {
+    background-color: @primary;
+    color: @foreground;
+
+    border: 1px solid @outline;
+    border-radius: 5px;
+
+    padding: 3px;
+    margin: 2px;
+}
+
+.notification-action:hover {
+    background-color: @primary;
+    color: @on_primary;
+}
+
+/* ===== VOLUME AND BRIGHTNESS ===== */
+
+.widget-volume,
+.widget-backlight,
+.widget-slider {
+    background-color: @background;
+    color: @foreground;
+    border-radius: 7px;
+
+    padding: 6px 16px;
+    margin: 2px 0;
+}
+
+.widget-volume label,
+.widget-backlight label,
+.widget-slider label {
+    color: @foreground;
+    font-size: 16px;
+}
+
+.widget-volume trough,
+.widget-backlight trough,
+.widget-slider trough {
+    background-color: @foreground;
+    border-radius: 99px;
+    min-height: 4px;
+}
+
+.widget-volume trough highlight,
+.widget-backlight trough highlight,
+.widget-slider trough highlight {
+    background-color: @primary;
+    border-radius: 99px;
+}
+
+.widget-volume trough slider,
+.widget-backlight trough slider,
+.widget-slider trough slider {
+    background-color: @secondary;
+    border-radius: 12px;
+
+    min-width: 28px;
+    min-height: 6px;
+}

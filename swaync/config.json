@@ -1,0 +1,114 @@
+{
+  "$schema": "https://raw.githubusercontent.com/ErikReider/SwayNotificationCenter/main/src/configSchema.json",
+  "ignore-gtk-theme": true,
+  "positionX": "right",
+  "positionY": "top",
+  "control-center-positionX": "right",
+  "control-center-positionY": "top",
+  "layer": "overlay",
+  "control-center-layer": "overlay",
+  "layer-shell": true,
+  "layer-shell-cover-screen": false,
+  "control-center-exclusive-zone": true,
+  "cssPriority": "user",
+  "control-center-margin-top": 10,
+  "control-center-margin-bottom": 0,
+  "control-center-margin-right": 10,
+  "control-center-margin-left": 0,
+  "control-center-width": 380,
+  "control-center-height": -1,
+  "fit-to-screen": false,
+  "notification-window-width": 380,
+  "notification-window-height": 100,
+  "notification-2fa-action": true,
+  "notification-inline-replies": false,
+  "notification-body-image-height": 80,
+  "notification-body-image-width": 140,
+  "timeout": 6,
+  "timeout-low": 3,
+  "timeout-critical": 0,
+  "relative-timestamps": true,
+  "keyboard-shortcuts": true,
+  "notification-grouping": true,
+  "image-visibility": "when-available",
+  "transition-time": 150,
+  "hide-on-clear": false,
+  "hide-on-action": true,
+  "text-empty": "No Notifications",
+  "script-fail-notify": true,
+  "widgets": [
+    "label#controls-title",
+    "volume",
+    "buttons-grid#controls",
+    "mpris",
+    "title#notifications",
+    "notifications"
+  ],
+  "widget-config": {
+    "mpris": {
+      "blacklist": [
+        "playerctl"
+      ],
+      "autohide": false,
+      "loop-carousel": false
+    },
+    "title#notifications": {
+      "text": "Notifications",
+      "clear-all-button": true,
+      "button-text": "Clear All"
+    },
+    "notifications": {
+      "vexpand": false
+    },
+    "label#controls-title": {
+      "text": "CONTROL CENTER",
+      "max-lines": 1
+    },
+    "slider#brightness": {
+      "label": "Brightness",
+      "min": 0,
+      "max": 100,
+      "min_limit": 0,
+      "max_limit": 100,
+      "value_scale": 0,
+      "cmd_setter": "ddcutil setvcp 10 $value",
+      "cmd_getter": "ddcutil getvcp 10 --brief 2>/dev/null | awk '{print $4}'"
+    },
+    "volume": {
+      "label": "",
+      "show-per-app": false,
+      "show-per-app-icon": true,
+      "show-per-app-label": false,
+      "expand-per-app": false
+    },
+    "buttons-grid#controls": {
+      "buttons-per-row": 3,
+      "actions": [
+        {
+          "label": "󰌹",
+          "type": "toggle",
+          "active": false,
+          "command": "sh -c 'if [ \"$SWAYNC_TOGGLE_STATE\" = true ]; then nmcli connection up Hotspot; else nmcli connection down Hotspot; fi'",
+          "update-command": "sh -c 'nmcli -t -f NAME connection show --active | grep -Fxq Hotspot && echo true || echo false'"
+        },
+        {
+          "label": "󰸉",
+          "type": "normal",
+          "command": "sh -c '$HOME/.local/bin/wallpaper.sh'"
+        },
+        {
+          "label": "",
+          "type": "normal",
+          "command": "sh -c 'cliphist list | rofi -dmenu -i -p Clipboard | cliphist decode | wl-copy'"
+        },
+        {
+          "label": "● REC",
+          "type": "toggle",
+          "active": false,
+          "command": "sh -c '~/.local/bin/record-toggle.sh'",
+          "update-command": "sh -c 'pgrep -x wf-recorder >/dev/null && echo true || echo false'"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,118 @@
+@import "/home/baby/.cache/matugen/colors.css";
+
+*{
+    border: none;
+    border-radius: 0px;
+    background-color:  transparent;
+    padding: 0;
+    margin: 0px 2px;
+    font-family: InputMono Nerd Font;
+}
+
+tooltip{
+    font-family: InputMono Nerd Font;
+    border: 1px solid @foreground;
+    border-radius: 12px;
+    background-color: @background;
+}
+tooltip label {
+    color: white;
+    padding: 5px;
+}
+#clock{
+    background-color: @background;
+    color: @primary;
+    padding: 2px 12px;
+    border-radius: 8px;
+    font-family: InputMono Nerd Font;
+    font-size: 12px;
+}
+#workspaces{
+    border-radius: 8px;
+    padding: 0px 8px;
+    transition: all 0.2s ease-in-out;
+    background-color: @background;
+}
+#workspaces button {
+    color: @primary;
+    font-size: 14px;
+    border-radius: 100%;
+    padding: 1px 2px;
+    margin: 1px 16px;
+    min-width: 16px;
+    transition: all 0.2s ease-in-out;
+}
+#workspaces button.active{
+    transition: all 0.2s ease-in-out;
+    padding: 1px 8px;
+    margin: 1px 16px;
+    border-radius: 8px;
+    background-color: @primary;
+    color: @on_primary;
+    padding-right: 12px;
+}
+
+#workspaces button:hover {
+    border-radius: 16px;
+    color: @on_primary;
+    margin: 1px 8px;
+    background: @primary;
+    padding: 0px 8px;
+    padding-right: 12px;
+}
+
+#mpris{
+    color: @primary;
+    font-size: 12px;
+    padding: 0px 8px;
+    border-radius: 8px;
+    transition: all 0.1s ease-in-out;
+}
+#mpris.paused {
+    color: @secondary;
+    font-size: 10px;
+    color: grey;
+    transition: all 0.1s ease-in-out;
+}
+#pulseaudio{
+    background-color: @background;
+    color: @foreground;
+    font-size: 12px;
+    border-radius: 8px;
+    padding: 0px 8px;
+}
+#network{
+    background-color: @background;
+    color: @primary;
+    font-size: 12px;
+    border-radius: 8px;
+    padding: 0px 8px;
+}
+#custom-notification{
+    background-color: @background;
+    color: @primary;
+    font-size: 12px;
+    border-radius: 8px;
+    padding: 0px 16px;
+}
+#custom-cpu{
+    font-size: 12px;
+    padding: 0px 8px;
+    border-radius: 6px;
+    color: @primary;
+    background-color: @background;
+}
+#custom-memory{
+    font-size: 12px;
+    padding: 0px 8px;
+    border-radius: 6px;
+    color: @primary;
+background-color: @background;
+}
+#custom-gpu{
+    font-size: 12px;
+    padding: 0px 8px;
+    border-radius: 6px;
+    color: @primary;
+background-color: @background;
+}

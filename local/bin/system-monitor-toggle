@@ -1,0 +1,43 @@
+
+#!/usr/bin/env bash
+set -u
+
+APP_DIR="$HOME/.config/system-monitor"
+APP="$APP_DIR/popup.py"
+PID_FILE="$APP_DIR/popup.pid"
+LOG="$HOME/.cache/system-monitor.log"
+
+mkdir -p "$APP_DIR" "$HOME/.cache"
+
+if [[ ! -f "$APP" ]]; then
+    notify-send "System Monitor" "Missing popup.py"
+    exit 1
+fi
+
+# Toggle the existing GTK process.
+if [[ -f "$PID_FILE" ]]; then
+    PID="$(cat "$PID_FILE" 2>/dev/null || true)"
+
+    if [[ "$PID" =~ ^[0-9]+$ ]] && kill -0 "$PID" 2>/dev/null; then
+        if kill -USR1 "$PID" 2>/dev/null; then
+            exit 0
+        fi
+    fi
+
+    rm -f "$PID_FILE"
+fi
+
+# Obtain the cursor position from Hyprland.
+CURSOR='{"x":20,"y":40}'
+if command -v hyprctl >/dev/null 2>&1; then
+    POS="$(hyprctl cursorpos -j 2>/dev/null || true)"
+    if [[ "$POS" =~ ^\{.*\}$ ]]; then
+        CURSOR="$POS"
+    fi
+fi
+
+# Start a persistent GTK window and keep its errors for debugging.
+nohup env SYSTEM_MONITOR_CURSOR="$CURSOR" \
+    /usr/bin/python "$APP" >> "$LOG" 2>&1 </dev/null &
+
+exit 0

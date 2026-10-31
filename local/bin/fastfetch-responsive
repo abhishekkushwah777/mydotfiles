@@ -1,0 +1,31 @@
+
+#!/usr/bin/env bash
+
+CONFIG="$HOME/.config/fastfetch/config.jsonc"
+
+COLS=$(tput cols 2>/dev/null || echo 80)
+ROWS=$(tput lines 2>/dev/null || echo 30)
+
+# Maximum image height: 20 cells.
+# Reserve some terminal rows for the text and prompt.
+HEIGHT=$(( ROWS - 12 ))
+
+if (( HEIGHT > 20 )); then
+    HEIGHT=20
+fi
+
+if (( HEIGHT < 5 )); then
+    HEIGHT=5
+fi
+
+# Switch to a vertical layout when the terminal is narrow.
+if (( COLS < 100 )); then
+    POSITION="top"
+else
+    POSITION="left"
+fi
+
+exec fastfetch \
+    --config "$CONFIG" \
+    --logo-position "$POSITION" \
+    --logo-height "$HEIGHT"

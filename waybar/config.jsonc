@@ -1,0 +1,141 @@
+{
+    "reload_style_on_change": true,
+    "layer": "top",
+    "position": "top",
+    "margin-top": 5,
+
+  // Load module configurations from zig-waybar-contrib
+  "include": [
+    "/usr/share/zig-waybar-contrib/config.jsonc"
+],
+
+
+    "modules-left": [
+        "clock",
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "mpris",
+        "custom/cava"
+    ],
+    "modules-right": [
+        "custom/cpu",
+	    "custom/memory",
+	    "custom/gpu",
+        "network",
+        "custom/notification"
+    ],
+    
+    "clock": {
+        "interval": 60,
+        "format": "{:%A, %I:%M}",
+        "max-length": 25,
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "month",
+            "mode-mon-col": 1,
+            "first-day-of-week": 1,
+            "on-scroll": 1,
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "days": "<span color='#ffffff'><b>{}</b></span>",
+                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        },
+    },
+    "custom/cava": {
+        "format": "{}",
+        "exec": "~/.config/waybar/cava.sh"
+    },
+    "hyprland/workspaces": {
+        "format": "{icon}",
+           "on-click": "hyprctl dispatch workspace {icon}",
+        "on-scroll-down": "hyprctl dispatch \"hl.dsp.focus({workspace = 'e+1'}\")",
+        "on-scroll-up": "hyprctl dispatch \"hl.dsp.focus({workspace = 'e-1'}\")",
+        "persistent-workspaces": {
+            "*": 5
+        },
+        "cursor": false,
+        "format-icons": {
+		"1": "",
+		"2": "",
+		"3": "",
+		"4": "󰉋",
+		"5": "",
+		"6": "",
+        	"persistent":"",
+		"default": "",	
+        	"empty": ""
+        }
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-muted": "  ",
+        "scroll-step": 5,
+        "format-icons": {
+            "alsa_output.pci-0000_00_1f.3.analog-stereo": "",
+            "alsa_output.pci-0000_00_1f.3.analog-stereo-muted": "",
+            "headphone": "",
+            "hands-free": "󰂑",
+            "headset": "󰂑",
+            "phone": "",
+            "phone-muted": "",
+            "portable": "",
+            "car": "",
+            "default": [
+                "",
+                ""
+            ]
+        },
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+    },
+    "mpris": {
+        "format": "♪ {artist} - {title}",
+        "tooltip-format": "{album}",
+        "format-paused": " {artist} - {title}",
+        "on-click": "playerctl play-pause",
+        "on-scroll-up": "playerctl previous",
+        "on-scroll-down": "playerctl next",
+        "max-length": 45
+    },
+    "network": {
+        "on-click": "/home/baby/.local/bin/system-monitor-toggle",
+        "interface": [
+            "wlp2s0",
+            "enp8s0"
+        ],
+        "format": "{icon}",
+        "format-wifi": "{essid} ({signalStrength}%)  ",
+        "format-ethernet": "LAN  ",
+        "format-disconnected": "", //An empty format will hide the module.
+        "format-disconnected": "",
+        "tooltip-format": "{ifname}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)  ",
+        "tooltip-format-ethernet": "{ifname} ",
+        "tooltip-format-disconnected": "Disconnected",
+        "max-length": 50
+    },
+    "custom/notification": {
+        "tooltip": true,
+        "format": "<span size='12pt'>{icon}</span>",
+        "format-icons": {
+            "notification": "󱗿",
+            "none": "󱥸",
+            "dnd-notification": "󰽥",
+            "dnd-none": "󰽥",
+            "inhibited-notification": "󰂛",
+            "inhibited-none": "󰪑",
+            "dnd-inhibited-notification": "󰂛",
+            "dnd-inhibited-none": "󰪑"
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+}
